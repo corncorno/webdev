@@ -106,9 +106,12 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : "Guest";
                     <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" style="width:100%; height:auto;">
                     <h3><?php echo $row['name']; ?></h3>
                     <p>₱<?php echo number_format($row['price'], 2); ?></p>
-                    <form method="POST">
+                    <form method="POST" class="add-to-cart-form">
                         <input type="hidden" name="product_id" value="<?php echo $row['id']; ?>">
-                        <button type="submit" name="add_to_cart">Add to Cart</button>
+                        <div class="add-to-cart-btn-wrapper">
+                            <button type="submit" name="add_to_cart">Add to Cart</button>
+                            <span class="add-to-cart-description"><?php echo htmlspecialchars($row['description']); ?></span>
+                        </div>
                     </form>
                 </div>
                 <?php endwhile; ?>
